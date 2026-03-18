@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для тебя 💕</title>
+
+    <!-- CSS стили - здесь мы описываем внешний вид страницы -->
+    <style>
+        /* ===== ОБЩИЕ НАСТРОЙКИ ===== */
+        * {
+            margin: 0;
+            /* Убираем отступы у всех элементов */
+            padding: 0;
+            /* Убираем внутренние отступы */
+            box-sizing: border-box;
+            /* Правильный расчет размеров */
+        }
+
+        body {
+            background: linear-gradient(180deg, #ffe6ea 0%, #ffd1dc 100%);
+            /* Розовый градиент сверху вниз */
+            font-family: 'Arial', sans-serif;
+            /* Шрифт */
+            color: #5a3d4a;
+            /* Цвет текста (темно-розовый) */
+            overflow-x: hidden;
+            /* Запрещаем горизонтальную прокрутку */
+            position: relative;
+        }
+
+        /* ===== СЕРДЕЧКИ НА ФОНЕ ===== */
+        .heart {
+            position: fixed;
+            /* Фиксируем относительно окна */
+            color: #dc143c;
+            /* Красный цвет (не токсичный) */
+            opacity: 0.6;
+            /* Прозрачность 60% */
+            z-index: -1;
+            /* Помещаем на задний план */
+            animation: float 6s ease-in-out infinite;
+            /* Анимация парения */
+        }
+
+        /* Анимация парения сердечек */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                /* Исходное положение */
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+                /* Поднимаемся и поворачиваемся */
+            }
+        }
+
+        /* ===== КОНТЕЙНЕР ДЛЯ КОНТЕНТА ===== */
+        .container {
+            max-width: 800px;
+            /* Максимальная ширина */
+            margin: 0 auto;
+            /* Центрируем */
+            padding: 40px 20px;
+            /* Отступы сверху/снизу 40px, слева/справа 20px */
+            position: relative;
+        }
+
+        /* ===== СТРЕЛОЧКИ ВНИЗ ===== */
+        .scroll-hint {
+            text-align: center;
+            /* Центрируем */
+            padding: 40px 0;
+            /* Отступы */
+            animation: bounce 2s infinite;
+            /* Анимация прыжка */
+        }
+
+        .arrow {
+            font-size: 40px;
+            /* Размер стрелки */
+            color: #ff69b4;
+            /* Ярко-розовый цвет */
+            display: block;
+            /* Каждая стрелка с новой строки */
+            margin: 10px 0;
+            /* Отступы сверху и снизу */
+        }
+
+        /* Анимация прыжка */
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                /* Исходное положение */
+            }
+
+            50% {
+                transform: translateY(15px);
+                /* Опускаемся вниз */
+            }
+        }
+
+        /* ===== ПИСЬМО ===== */
+        .letter {
+            background: #fff5f7;
+            /* Светло-розовый фон */
+            border: 3px solid #ffb6c1;
+            /* Розовая рамка */
+            border-radius: 20px;
+            /* Скругленные углы */
+            padding: 50px 40px;
+            /* Внутренние отступы */
+            margin: 40px 0;
+            /* Отступы снаружи */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            /* Тень */
+            position: relative;
+        }
+
+        /* Декоративная лента сверху письма */
+        .letter::before {
+            content: '💌';
+            /* Иконка конверта */
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            /* Центрируем */
+            font-size: 50px;
+            background: #fff5f7;
+            padding: 0 20px;
+            border-radius: 50%;
+        }
+
+        .letter-title {
+            text-align: center;
+            /* Центрируем заголовок */
+            font-size: 32px;
+            /* Размер шрифта */
+            color: #c71585;
+            /* Темно-розовый цвет */
+            margin-bottom: 30px;
+            /* Отступ снизу */
+            font-weight: bold;
+            /* Жирный шрифт */
+        }
+
+        .letter-text {
+            font-size: 18px;
+            /* Размер текста */
+            line-height: 1.8;
+            /* Межстрочный интервал */
+            text-align: justify;
+            /* Выравнивание по ширине */
+        }
+
+        /* ===== СЕКЦИИ ДЛЯ ПРОКРУТКИ ===== */
+        .section {
+            min-height: 60vh;
+            /* Минимальная высота 60% от высоты экрана */
+            display: flex;
+            align-items: center;
+            /* Центрируем по вертикали */
+            justify-content: center;
+            /* Центрируем по горизонтали */
+            padding: 40px 20px;
+        }
+
+        .section-text {
+            font-size: 24px;
+            text-align: center;
+            color: #8b456a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- СЕРДЕЧКИ НА ФОНЕ -->
+    <!-- data-size - размер сердечка, data-top/d-left - позиция -->
+    <div class="heart" style="font-size: 30px; top: 10%; left: 5%;">💕</div>
+    <div class="heart" style="font-size: 50px; top: 20%; right: 10%; animation-delay: 1s;">❤️</div>
+    <div class="heart" style="font-size: 25px; top: 40%; left: 8%; animation-delay: 2s;">💖</div>
+    <div class="heart" style="font-size: 40px; top: 60%; right: 5%; animation-delay: 3s;">💗</div>
+    <div class="heart" style="font-size: 35px; top: 75%; left: 12%; animation-delay: 1.5s;">💓</div>
+    <div class="heart" style="font-size: 45px; top: 85%; right: 8%; animation-delay: 2.5s;">💝</div>
+    <div class="heart" style="font-size: 28px; top: 95%; left: 6%; animation-delay: 0.5s;">💘</div>
+
+    <!-- ОСНОВНОЙ КОНТЕЙНЕР -->
+    <div class="container">
+
+        <!-- СЕКЦИЯ 1: Приветствие -->
+        <div class="section">
+            <div class="section-text">
+                <h1 style="font-size: 48px; color: #c71585; margin-bottom: 20px;">
+                    Для тебя... 💕
+                </h1>
+                <p style="font-size: 22px;">Пролистай вниз, чтобы узнать что-то важное</p>
+            </div>
+        </div>
+
+        <!-- СТРЕЛОЧКИ, КОТОРЫЕ ПОБУЖДАЮТ ЛИСТАТЬ -->
+        <div class="scroll-hint">
+            <span class="arrow">↓</span>
+            <span class="arrow">↓</span>
+            <span class="arrow">↓</span>
+            <p style="color: #ff69b4; font-size: 18px; margin-top: 20px;">
+                Листай вниз...
+            </p>
+        </div>
+
+        <!-- СЕКЦИЯ 2: Письмо -->
+        <div class="section">
+            <div class="letter">
+                <h1 class="letter-title">💌 Послание для моей любимой 💌</h1>
+                <div class="letter-text">
+                    <p>
+                        <!-- СЮДА ВПИШИТЕ СВОЙ ТЕКСТ -->
+                        Дорогая...<br><br>
+
+                        Здесь ты можешь написать всё, что хочешь сказать.<br><br>
+
+                        Например:<br>
+                        - Почему она для тебя особенная<br>
+                        - Ваши общие воспоминания<br>
+                        - Что ты чувствуешь<br>
+                        - Ваши планы на будущее<br><br>
+
+                        Этот текст ты можешь изменить в HTML файле.<br>
+                        Просто найди этот блок и напиши свои слова.<br><br>
+
+                        С любовью,<br>
+                        [Твоё имя] ❤️
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ЕЩЁ СТРЕЛОЧКИ -->
+        <div class="scroll-hint">
+            <span class="arrow">↓</span>
+            <span class="arrow">↓</span>
+        </div>
+
+        <!-- СЕКЦИЯ 3: Финал -->
+        <div class="section">
+            <div class="section-text">
+                <h2 style="font-size: 36px; color: #c71585; margin-bottom: 20px;">
+                    Я тебя люблю! 💕
+                </h2>
+                <div style="font-size: 60px; margin-top: 30px;">
+                    ❤️💕❤️
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
