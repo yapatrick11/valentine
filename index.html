@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- ✅ ОБНОВЛЕНО: добавлен maximum-scale для лучшего контроля -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Для тебя 💕</title>
 
@@ -22,9 +21,7 @@
             color: #5a3d4a;
             overflow-x: hidden;
             position: relative;
-            /* ✅ ДОБАВЛЕНО: для предотвращения горизонтальной прокрутки */
             width: 100%;
-            /* ✅ ДОБАВЛЕНО */
         }
 
         /* ===== СЕРДЕЧКИ НА ФОНЕ ===== */
@@ -34,7 +31,6 @@
             opacity: 0.6;
             z-index: -1;
             animation: float 6s ease-in-out infinite;
-            /* ✅ ДОБАВЛЕНО: чтобы на мобильных не вылезали за экран */
             pointer-events: none;
         }
 
@@ -57,7 +53,6 @@
             margin: 0 auto;
             padding: 40px 20px;
             position: relative;
-            /* ✅ ДОБАВЛЕНО: для мобильных */
             width: 100%;
         }
 
@@ -93,12 +88,10 @@
             background: #fff5f7;
             border: 3px solid #ffb6c1;
             border-radius: 20px;
-            /* ✅ ИЗМЕНЕНО: адаптивные отступы */
             padding: 50px 40px;
             margin: 40px 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             position: relative;
-            /* ✅ ДОБАВЛЕНО */
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
@@ -118,28 +111,23 @@
 
         .letter-title {
             text-align: center;
-            /* ✅ ИЗМЕНЕНО: адаптивный размер шрифта */
             font-size: clamp(24px, 5vw, 32px);
             color: #c71585;
             margin-bottom: 30px;
             font-weight: bold;
-            /* ✅ ДОБАВЛЕНО: для переноса длинных слов */
             word-wrap: break-word;
         }
 
         .letter-text {
-            /* ✅ ИЗМЕНЕНО: адаптивный размер */
             font-size: clamp(16px, 4vw, 18px);
             line-height: 1.8;
             text-align: justify;
-            /* ✅ ДОБАВЛЕНО */
             word-wrap: break-word;
             hyphens: auto;
         }
 
         /* ===== СЕКЦИИ ДЛЯ ПРОКРУТКИ ===== */
         .section {
-            /* ✅ ИЗМЕНЕНО: меньшая высота для мобильных */
             min-height: 50vh;
             display: flex;
             align-items: center;
@@ -148,11 +136,9 @@
         }
 
         .section-text {
-            /* ✅ ИЗМЕНЕНО: адаптивный размер */
             font-size: clamp(18px, 4vw, 24px);
             text-align: center;
             color: #8b456a;
-            /* ✅ ДОБАВЛЕНО */
             width: 100%;
             padding: 0 10px;
         }
@@ -161,7 +147,6 @@
            ✅ МОБИЛЬНАЯ АДАПТАЦИЯ (MEDIA QUERIES)
            ========================================== */
 
-        /* Планшеты и небольшие экраны (до 768px) */
         @media screen and (max-width: 768px) {
             .container {
                 padding: 30px 15px;
@@ -191,13 +176,9 @@
             }
         }
 
-        /* Мобильные телефоны (до 480px) */
         @media screen and (max-width: 480px) {
-            body {
-                /* Убираем фиксированные сердечки на очень маленьких экранах */
-            }
+            body {}
 
-            /* ✅ СКРЫВАЕМ некоторые фоновые сердечки на мобильных */
             .heart:nth-child(n+5) {
                 display: none;
             }
@@ -243,7 +224,6 @@
                 font-size: 16px;
                 line-height: 1.6;
                 text-align: left;
-                /* На мобильных лучше слева */
             }
 
             .scroll-hint {
@@ -255,32 +235,11 @@
                 margin: 5px 0;
             }
 
-            /* Финальные сердечки */
             div[style*="font-size: 60px"] {
                 font-size: 40px !important;
             }
         }
 
-        /* Очень маленькие экраны (до 360px) */
-        @media screen and (max-width: 360px) {
-            .section h1 {
-                font-size: 28px !important;
-            }
-
-            .letter {
-                padding: 25px 15px;
-            }
-
-            .letter-title {
-                font-size: 20px;
-            }
-
-            .letter-text {
-                font-size: 14px;
-            }
-        }
-
-        /* ✅ ДЛЯ ГОРИЗОНТАЛЬНОЙ ОРИЕНТАЦИИ на телефонах */
         @media screen and (max-height: 500px) and (orientation: landscape) {
             .section {
                 min-height: auto;
@@ -289,7 +248,6 @@
 
             .heart {
                 display: none;
-                /* Скрываем сердечки в ландшафте */
             }
         }
     </style>
@@ -298,7 +256,6 @@
 <body>
 
     <!-- СЕРДЕЧКИ НА ФОНЕ -->
-    <!-- ✅ ДОБАВЛЕНО: class для лучшего контроля -->
     <div class="heart" style="font-size: 30px; top: 10%; left: 5%;">💗</div>
     <div class="heart" style="font-size: 50px; top: 20%; right: 10%; animation-delay: 1s;">💗</div>
     <div class="heart" style="font-size: 25px; top: 40%; left: 8%; animation-delay: 2s;">💗</div>
@@ -368,10 +325,10 @@
             <div class="section-text">
                 <h2
                     style="font-size: clamp(28px, 7vw, 36px); color: #c71585; margin-bottom: 20px; word-wrap: break-word;">
-                    Я тебя люблю! 💕
+                    Я тебя люблю!
                 </h2>
                 <div style="font-size: clamp(40px, 10vw, 60px); margin-top: 30px;">
-                    ❤️❤️❤️
+                    🤍🤍🤍
                 </div>
             </div>
         </div>
